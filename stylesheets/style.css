@@ -1,0 +1,39 @@
+.centered {
+    margin: auto;
+    width: 500px;
+}
+#time {
+	width: 40px;
+}
+#date {
+    width: 75px;
+}
+#type {
+    width: 100px;
+}
+#fieldsetArea {
+	width: 500px;
+}
+#box-table {
+	vertical-align: middle;
+	font-size: 13px;
+	margin-top: 45px;
+	width: 500px;
+	text-align: left;
+	border-collapse: collapse;
+}
+#box-table th {
+	font-size: 14px;
+	font-weight: bold;
+	padding: 8px;
+	background: gray;
+	border-bottom: 1px solid #fff;
+	color: #039;
+}
+#box-table td {
+	padding: 8px;
+	background: white; 
+	border-bottom: 1px solid #fff;
+	color: #669;
+	border-top: 1px solid transparent;
+}
