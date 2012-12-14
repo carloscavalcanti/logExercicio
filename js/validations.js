@@ -23,4 +23,5 @@ function isValidDate(txtDate) {
           return false;
   }
   return true;
-}	
+}
+	
