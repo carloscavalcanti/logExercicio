@@ -50,6 +50,9 @@
  	 }
 	  var decimal = hours - parseInt(hours);
 	  var minutesConverted = Math.round(decimal * 60);
+	  if (decimal % 60 == 0) {
+		hours += minutesConverted / 60;
+	  }		
 	  return parseInt(hours) + ' horas e ' + minutesConverted + ' minutos';
 	},
 
@@ -78,7 +81,6 @@
     },
     render: function(){
       var self = this;
-      $(this.el).append("<ul></ul>");
       _(this.collection.models).each(function(trainingItem){
         self.appendItem(trainingItem);
       }, this);
