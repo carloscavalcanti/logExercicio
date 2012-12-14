@@ -36,7 +36,7 @@
 
 	showTrainingStatus: function() {
 		$('#training-status').css("display", "block");
-        $('#training-status').html('Você já fez ' + this.calculateHourAndMinute()  +' horas de exercicio');
+        $('#training-status').html('Você já fez ' + this.calculateHourAndMinute()  +' de exercicio');
 	},
 
 	calculateHourAndMinute: function() {
@@ -45,8 +45,8 @@
 	  var min = parseFloat(time.substr(3,2));	
 	  hours += hour + min/60;
 	  var decimal = hours - parseInt(hours);
-	  var minutesConverted = parseInt(decimal * 60);
-	  return parseInt(hours) + ':' + minutesConverted;
+	  var minutesConverted = Math.round(decimal * 60);
+	  return parseInt(hours) + ' horas e ' + minutesConverted + ' minutos';
 	},
 
     unrender: function(){
