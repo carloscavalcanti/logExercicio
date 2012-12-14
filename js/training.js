@@ -55,15 +55,8 @@
 	  var decimal = hours - parseInt(hours);
 	  var minutesConverted = Math.round(decimal * 60);
 	  if (minutesConverted % 60 == 0) {
-		console.log("horas:" + hours);
-		console.log("converted: " + minutesConverted);
-		console.log("converted/60: "+ minutesConverted / 60);
 		hours = parseInt(hours) + minutesConverted / 60;
 		minutesConverted = 0;
-		console.log("=============");		
-		console.log("horas:" + hours);
-		console.log("converted: " + minutesConverted);
-		console.log("converted/60: "+ minutesConverted / 60);		
 	  }		
 	  return parseInt(hours) + ' horas e ' + minutesConverted + ' minutos';
 	},
