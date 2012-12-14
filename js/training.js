@@ -29,21 +29,25 @@
     },
 
     render: function(){
-	  this.showTrainingStatus();
+	  this.showTrainingStatus(true);
       $(this.el).html('<td>'+this.model.get('type')+'</td><td> '+this.model.get('time')+'</td><td> '+this.model.get('date')+'</td><td><span class="delete" style="cursor:pointer; color:red;  font-family:sans-serif;"><img src="images/ic_cleanup.png"></span></td>' );
       return this;
     },
 
-	showTrainingStatus: function() {
+	showTrainingStatus: function(isSum) {
 		$('#training-status').css("display", "block");
-        $('#training-status').html('Você já fez ' + this.calculateHourAndMinute()  +' de exercicio');
+        $('#training-status').html('Você já fez ' + this.calculateHourAndMinute(isSum)  +' de exercicio');
 	},
 
-	calculateHourAndMinute: function() {
+	calculateHourAndMinute: function(isSum) {
 	  var time = this.model.get('time');
 	  var hour = parseFloat(time.substr(0,2));
 	  var min = parseFloat(time.substr(3,2));	
-	  hours += hour + min/60;
+	  if (isSum) {
+		 hours += hour + min/60;
+	 } else {
+	     hours -= hour + min/60;	
+ 	 }
 	  var decimal = hours - parseInt(hours);
 	  var minutesConverted = Math.round(decimal * 60);
 	  return parseInt(hours) + ' horas e ' + minutesConverted + ' minutos';
@@ -54,6 +58,7 @@
     },
 
     remove: function(){
+	  this.showTrainingStatus(false);
       this.model.destroy();
     }
   });
