@@ -30,9 +30,13 @@
 
     render: function(){
 	  this.showTrainingStatus(true);
-      $(this.el).html('<td>'+this.model.get('type')+'</td><td> '+this.model.get('time')+'</td><td> '+this.model.get('date')+'</td><td><span class="delete" style="cursor:pointer; color:red;  font-family:sans-serif;"><img src="images/ic_cleanup.png"></span></td>' );
+	  this.addTrainingLine();
       return this;
     },
+
+	addTrainingLine: function() {
+	  $(this.el).html('<td>'+this.model.get('type')+'</td><td> '+this.model.get('time')+'</td><td> '+this.model.get('date')+'</td><td><span class="delete" style="cursor:pointer; color:red;  font-family:sans-serif;"><img src="images/ic_cleanup.png"></span></td>' );	
+	},
 
 	showTrainingStatus: function(isSum) {
 		$('#training-status').css("display", "block");
@@ -50,8 +54,16 @@
  	 }
 	  var decimal = hours - parseInt(hours);
 	  var minutesConverted = Math.round(decimal * 60);
-	  if (decimal % 60 == 0) {
-		hours += minutesConverted / 60;
+	  if (minutesConverted % 60 == 0) {
+		console.log("horas:" + hours);
+		console.log("converted: " + minutesConverted);
+		console.log("converted/60: "+ minutesConverted / 60);
+		hours = parseInt(hours) + minutesConverted / 60;
+		minutesConverted = 0;
+		console.log("=============");		
+		console.log("horas:" + hours);
+		console.log("converted: " + minutesConverted);
+		console.log("converted/60: "+ minutesConverted / 60);		
 	  }		
 	  return parseInt(hours) + ' horas e ' + minutesConverted + ' minutos';
 	},
