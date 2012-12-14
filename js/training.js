@@ -35,7 +35,7 @@
     },
 
 	addTrainingLine: function() {
-	  $(this.el).html('<td>'+this.model.get('type')+'</td><td> '+this.model.get('time')+'</td><td> '+this.model.get('date')+'</td><td><span class="delete" style="cursor:pointer; color:red;  font-family:sans-serif;"><img src="images/ic_cleanup.png"></span></td>' );	
+	  $(this.el).html('<td>'+this.model.get('type')+'</td><td> '+this.model.get('time')+'</td><td> '+this.model.get('date')+'</td><td><span class="delete" style="cursor:pointer; font-family:sans-serif;"><img src="images/ic_cleanup.png"></span></td>' );	
 	},
 
 	showTrainingStatus: function(isSum) {
@@ -98,7 +98,7 @@
 		var date = $("#date").val()		
 		var type = $("#type option:selected").text();
 						
-		if (!validFields(time, date, type)) {
+		if (!isValidFields(time, date, type)) {
 			return;
 		}
 		
@@ -117,7 +117,7 @@
 		$("#time").val('');
 		$("#date").val('');
 		$("#type option:first").attr('selected','selected');
-		$('#message-error').css("display", "none");
+		//$('#message-error').css("display", "none");
 	},
 	
     appendItem: function(trainingItem){
