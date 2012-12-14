@@ -98,7 +98,7 @@
 		var date = $("#date").val()		
 		var type = $("#type option:selected").text();
 						
-		if (this.hasError(time, date, type)) {
+		if (!validFields(time, date, type)) {
 			return;
 		}
 		
@@ -118,25 +118,6 @@
 		$("#date").val('');
 		$("#type option:first").attr('selected','selected');
 		$('#message-error').css("display", "none");
-	},
-	
-	hasError: function(time, date, type) {
-		if (time == "") {
-			$('#message-error').css("display", "block");
-			$('#message-error').html('<strong>Preencha o tempo!</strong>');
-			return true;
-		} else if (date == "") {
-			$('#message-error').css("display", "block");
-			$('#message-error').html('<strong>Preencha a data!</strong>');
-			return true;			
-		} else if (!isValidDate(date)) {
-			$('#message-error').css("display", "block");
-			$('#message-error').html('<strong>Data inválida. Preencha-a corretamente! Formato correto: dd/mm/yyyy.</strong>');
-			return true;
-		} else {
-			return false;
-		}
-
 	},
 	
     appendItem: function(trainingItem){
