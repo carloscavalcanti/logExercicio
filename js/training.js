@@ -71,6 +71,7 @@
     events: {
       'click button#add': 'addItem'
    },
+
     initialize: function(){
       _.bindAll(this, 'render', 'addItem', 'appendItem');
       
@@ -79,12 +80,14 @@
 
       this.render();
     },
+
     render: function(){
       var self = this;
       _(this.collection.models).each(function(trainingItem){
         self.appendItem(trainingItem);
       }, this);
     },
+
 	addItem: function(){
 		var time = $("#time").val();
 		var date = $("#date").val()		
@@ -104,12 +107,14 @@
 		
 		this.clearFields();
     },
+
 	clearFields: function() {
 		$("#time").val('');
 		$("#date").val('');
 		$("#type option:first").attr('selected','selected');
 		$('#message-error').css("display", "none");
 	},
+	
 	hasError: function(time, date, type) {
 		if (time == "") {
 			$('#message-error').css("display", "block");
@@ -124,6 +129,7 @@
 		}
 
 	},
+	
     appendItem: function(trainingItem){
       var itemView = new ItemView({
         model: trainingItem
@@ -131,7 +137,6 @@
       $('table', this.el).append(itemView.render().el);
     }
   });
-
 
   var listView = new ListView();
 })(jQuery);
