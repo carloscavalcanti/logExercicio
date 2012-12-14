@@ -1,4 +1,5 @@
 (function($){
+  var hours = 0;
   Backbone.sync = function(method, model, success, error){ 
     success();
   }
@@ -28,9 +29,25 @@
     },
 
     render: function(){
-      $(this.el).html('<td>'+this.model.get('type')+'</td><td> '+this.model.get('time')+'</td><td> '+this.model.get('date')+'</td><td><span class="delete" style="cursor:pointer; color:red;  font-family:sans-serif;"><img src="images/ic_cleanup.png"></span></td>');
+	  this.showTrainingStatus();
+      $(this.el).html('<td>'+this.model.get('type')+'</td><td> '+this.model.get('time')+'</td><td> '+this.model.get('date')+'</td><td><span class="delete" style="cursor:pointer; color:red;  font-family:sans-serif;"><img src="images/ic_cleanup.png"></span></td>' );
       return this;
     },
+
+	showTrainingStatus: function() {
+		$('#training-status').css("display", "block");
+        $('#training-status').html('Você já fez ' + this.calculateHourAndMinute()  +' horas de exercicio');
+	},
+
+	calculateHourAndMinute: function() {
+	  var time = this.model.get('time');
+	  var hour = parseFloat(time.substr(0,2));
+	  var min = parseFloat(time.substr(3,2));	
+	  hours += hour + min/60;
+	  var decimal = hours - parseInt(hours);
+	  var minutesConverted = parseInt(decimal * 60);
+	  return parseInt(hours) + ':' + minutesConverted;
+	},
 
     unrender: function(){
       $(this.el).remove();
