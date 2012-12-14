@@ -44,6 +44,7 @@ function isValidFields(time, date, type) {
 	
 	if (!isValidFields) {
 		$('#message-error').css("display", "block");		
+		$('#message-error').delay(4000).fadeOut('slow');
 	}
 	
 	return isValidFields;
