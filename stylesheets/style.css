@@ -1,0 +1,50 @@
+.centered {
+    margin: auto;
+    width: 500px;
+}
+#time {
+	width: 40px;
+}
+#date {
+    width: 75px;
+}
+#type {
+    width: 100px;
+}
+#fieldsetArea {
+	width: 500px;
+}
+#message-error {
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+	color: #D8000C;
+	background-color: #FFBABA;
+	display: none;
+}
+
+#box-table {
+	vertical-align: middle;
+	font-size: 13px;
+	margin-top: 45px;
+	width: 500px;
+	text-align: left;
+	border-collapse: collapse;
+}
+#box-table th {
+	font-size: 14px;
+	font-weight: bold;
+	padding: 8px;
+	background: gray;
+	border-bottom: 1px solid #fff;
+	color: #039;
+}
+#box-table td {
+	padding: 8px;
+	background: white; 
+	border-bottom: 1px solid #fff;
+	color: #669;
+	border-top: 1px solid transparent;
+}

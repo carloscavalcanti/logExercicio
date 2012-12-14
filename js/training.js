@@ -66,6 +66,18 @@
 		var date = $("#date").val()		
 		var type = $("#type option:selected").text();
 		
+		if (time == "") {
+			$('#message-error').css("display", "block");
+			$('#message-error').html('<strong>Preencha o tempo!</strong>');
+			return;
+		}
+		
+		if (date == "") {
+			$('#message-error').css("display", "block");
+			$('#message-error').html('<strong>Preencha a data!</strong>');
+			return;			
+		}
+		
 		var trainingItem = new TrainingItem();
         trainingItem.set({
           type: type,
@@ -77,6 +89,7 @@
 		$("#time").val('');
 		$("#date").val('');
 		$("#type option:first").attr('selected','selected');
+		$('#message-error').css("display", "none");
     },
     appendItem: function(trainingItem){
       var itemView = new ItemView({
