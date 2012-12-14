@@ -1,4 +1,4 @@
-(function($){
+(function training($){
   var hours = 0;
   Backbone.sync = function(method, model, success, error){ 
     success();
@@ -129,6 +129,10 @@
 			$('#message-error').css("display", "block");
 			$('#message-error').html('<strong>Preencha a data!</strong>');
 			return true;			
+		} else if (!isValidDate(date)) {
+			$('#message-error').css("display", "block");
+			$('#message-error').html('<strong>Data inválida. Preencha-a corretamente! Formato correto: dd/mm/yyyy.</strong>');
+			return true;
 		} else {
 			return false;
 		}
