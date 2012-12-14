@@ -40,7 +40,7 @@
 
 	showTrainingStatus: function(isSum) {
 		$('#training-status').css("display", "block");
-        $('#training-status').html('Você já fez ' + this.calculateHourAndMinute(isSum)  +' de exercicio');
+        $('#training-status').html('Você já fez ' + this.calculateHourAndMinute(isSum)  +' de exercicio(s)');
 	},
 
 	calculateHourAndMinute: function(isSum) {
