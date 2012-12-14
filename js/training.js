@@ -65,17 +65,9 @@
 		var time = $("#time").val();
 		var date = $("#date").val()		
 		var type = $("#type option:selected").text();
-		
-		if (time == "") {
-			$('#message-error').css("display", "block");
-			$('#message-error').html('<strong>Preencha o tempo!</strong>');
+						
+		if (this.hasError(time, date, type)) {
 			return;
-		}
-		
-		if (date == "") {
-			$('#message-error').css("display", "block");
-			$('#message-error').html('<strong>Preencha a data!</strong>');
-			return;			
 		}
 		
 		var trainingItem = new TrainingItem();
@@ -85,12 +77,29 @@
 		  date: date
         });		
         this.collection.add(trainingItem);
-
+		
+		this.clearFields();
+    },
+	clearFields: function() {
 		$("#time").val('');
 		$("#date").val('');
 		$("#type option:first").attr('selected','selected');
 		$('#message-error').css("display", "none");
-    },
+	},
+	hasError: function(time, date, type) {
+		if (time == "") {
+			$('#message-error').css("display", "block");
+			$('#message-error').html('<strong>Preencha o tempo!</strong>');
+			return true;
+		} else if (date == "") {
+			$('#message-error').css("display", "block");
+			$('#message-error').html('<strong>Preencha a data!</strong>');
+			return true;			
+		} else {
+			return false;
+		}
+
+	},
     appendItem: function(trainingItem){
       var itemView = new ItemView({
         model: trainingItem
